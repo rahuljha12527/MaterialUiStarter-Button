@@ -29,4 +29,4 @@
      
      <h2>For Clone this project</h2>
      
-   git clone  https://github.com/rahuljha12527/MaterialUiStarter-Button.git
+  $ git clone  https://github.com/rahuljha12527/MaterialUiStarter-Button.git
