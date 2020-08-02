@@ -14,17 +14,51 @@ const useStyles = makeStyles({
   },
 });
 
-function createData( name:any, calories:number, fat:number, carbs:number, protein:number) {
-  return { name, calories, fat, carbs, protein };
-}
+// function createData( name:any, calories:number, fat:number, carbs:number, protein:number) {
+//   return { name, calories, fat, carbs, protein };
+// }
 
-const rows = [
-  createData('Frozen yoghurt', 159, 6, 24, 4),
-  createData('Ice cream sandwich', 237, 9, 37, 4),
-  createData('Eclair', 262, 16, 24, 6),
-  createData('Cupcake', 305, 3, 67, 4),
-  createData('Gingerbread', 356, 16, 49, 3),
-];
+const data=[
+  {
+    name:"Frozen yoghurt",
+    calories:"159",
+    fat:"6",
+    carbs:"24",
+    protein:"4",
+  },
+  {
+    name:"Ice cream sandwich",
+    calories:"237",
+    fat:"9",
+    carbs:"37",
+    protein:"4",
+  },
+  {
+    name:"Eclair",
+    calories:"262",
+    fat:"16",
+    carbs:"24",
+    protein:"6",
+  },
+  {
+    name:"Cupcake",
+    calories:" 305",
+    fat:" 3",
+    carbs:"67",
+    protein:"4",
+  },
+  {
+    name:"Gingerbread",
+    calories:"356",
+    fat:"16",
+    carbs:"49",
+    protein:"3",
+  },
+
+]
+
+
+
 
 export default function SimpleTable() {
   const classes = useStyles();
@@ -42,7 +76,7 @@ export default function SimpleTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {data.map((row) => (
             <TableRow key={row.name}>
               <TableCell component="th" scope="row">
                 {row.name}
