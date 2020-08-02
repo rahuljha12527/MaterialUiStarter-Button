@@ -1,6 +1,7 @@
 import React from "react";
 
 import "./App.css";
+import SimpleTable from './SimpleTable';
 
 //import Button from "@material-ui/core/Button";
 import WhatsAppIcon from "@material-ui/icons/WhatsApp";
@@ -38,9 +39,11 @@ function App() {
   const classes = useStyles();
 
   return (
+
+
     <div className="App">
      
-        
+        <SimpleTable/>
      
       <IconButton className={classes.root  }    color="secondary" aria-label="add an alarm"  >
   <span className={classes.label}>Share &nbsp;  <WhatsAppIcon />  </span>
