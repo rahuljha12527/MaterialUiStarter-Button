@@ -34,6 +34,8 @@ const useStyles = makeStyles({
   
  
 });
+
+
 function App() {
 
  
@@ -50,11 +52,11 @@ function App() {
   <span className={classes.label}>Share &nbsp;  <WhatsAppIcon />  </span>
     
       </IconButton>
-      <IconButton  className={classes.root} color="secondary" aria-label="add an alarm">
+      <IconButton  className={classes.root}  color="secondary" aria-label="add an alarm">
       <span className={classes.label}>Download &nbsp;  <PictureAsPdfSharpIcon/>  </span>
       
 </IconButton>
-      
+     
      
     </div>
   );
