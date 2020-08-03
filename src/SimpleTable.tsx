@@ -63,9 +63,15 @@ const data=[
 
 
 const myObj1=JSON.stringify(data);
-console.log(myObj1);
+//console.log(myObj1);
 
-
+const json2md=require("json2md");
+//console.log(data);
+console.log(json2md([
+  { table: { headers: ["name", "calories","fat","carbs","protein"], rows: [[ "1", "23","16","49","3" ],
+  [  "1",  "322","14","43","4" ]] } }
+  
+]))
 
  function jspPdfGenerator():void{
       const doc=new jsPDF();
