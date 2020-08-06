@@ -40,12 +40,5 @@
   
   ![ImageforGithub](https://user-images.githubusercontent.com/45179877/89106278-45149f00-d446-11ea-9b8f-772263bbda72.PNG)
   
-  
-  {% for state in states.input_datetime -%}
-{%- if loop.first %}
-{% elif loop.last %}
-{% else %}          
-{% endif -%}
-| {{ state.name | capitalize }} | {{ state.attributes.day }}/{{ state.attributes.month }}/{{ state.attributes.year }} |
-{%- endfor %}
+
 
