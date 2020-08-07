@@ -11,6 +11,8 @@ import jsPDF from 'jspdf';
 import ReactMarkdown from 'react-markdown';
 import autoTable from 'jspdf-autotable';
 import 'jspdf-autotable';
+import json2md from 'json2md';
+
 
 const useStyles = makeStyles({
   table: {
@@ -21,6 +23,10 @@ const useStyles = makeStyles({
 // function createData( name:any, calories:number, fat:number, carbs:number, protein:number) {
 //   return { name, calories, fat, carbs, protein };
 // }
+
+
+
+
 
 const data=[
   {
@@ -62,16 +68,104 @@ const data=[
 ]
 
 
-const myObj1=JSON.stringify(data);
-//console.log(myObj1);
 
-const json2md=require("json2md");
-//console.log(data);
-console.log(json2md([
-  { table: { headers: ["name", "calories","fat","carbs","protein"], rows: [[ "1", "23","16","49","3" ],
-  [  "1",  "322","14","43","4" ]] } }
+
+// const myObj1=JSON.stringify(data);
+// //console.log(myObj1);
+
+// // const json2md=require("json2md");
+
+// let json2mdF=json2md([
+//   { table: { headers: ["name", "calories","fat","carbs","protein"], rows: [[ "1", "23","16","49","3" ],
+//   [  "1",  "322","14","43","4" ],
+//   ] } }
   
-]))
+// ])
+
+// // interface tableIntrface {
+// //   table: 
+// // }
+
+// let jsonobj: json2md.DataObject ={
+//   table:{
+//     headers: ["name", 
+//     "calories",
+//     "fat",
+//     "carbs",
+//     "protein"
+//   ],
+//     rows:[]
+//   }
+// };
+
+
+// for(let i=0;i<10;i++){
+//   if(jsonobj.table!==undefined){
+//     //@ts-ignore
+//     jsonobj.table.rows.push({name:"rahul",calories:"121",fat:"23",carbs:"43",protein:"43"});
+//   }
+
+// }
+
+
+// for(let row=0 ;row<data.length; row++){
+  
+//     console.log(json2md([
+      
+      
+//     ]))
+    
+  
+// }
+let jsonObj:json2md.DataObject ={
+  table:{
+      headers:[
+          "name",
+          "calories",
+          "fat",
+          "carbs",
+          "protein"
+
+      ],
+      rows:[]
+  }
+};
+
+for(let datas  of data){
+  if(jsonObj.table!==undefined){
+    //@ts-ignore
+  jsonObj.table.rows.push([datas.name,datas.calories,datas.fat,datas.carbs,datas.protein]);
+}
+}
+
+
+console.log(json2md(jsonObj));
+//console.log(data);
+// console.log(json2md([
+//   { table: { headers: ["name", "calories","fat","carbs","protein"], rows: [[ "1", "23","16","49","3" ],
+//   [  "1",  "322","14","43","4" ]] } }
+  
+// ]))
+
+function downloadAsOnject(data:any,exportName:any):void{
+    let dataStr="data:text;charset=utf-8," + encodeURIComponent(json2md(jsonObj));
+    let downloadAnchorNode=document.createElement('a');
+    downloadAnchorNode.setAttribute("href",dataStr);
+    downloadAnchorNode.setAttribute("download",exportName+".md");
+    document.body.appendChild(downloadAnchorNode);
+    downloadAnchorNode.click();
+    downloadAnchorNode.remove();
+}
+
+function generateDynamicTable():void{
+   let dataLength=data.length;
+
+   if(dataLength>0){  
+
+   }
+
+}
+
 
  function jspPdfGenerator():void{
       const doc=new jsPDF();
@@ -129,6 +223,8 @@ export default function SimpleTable() {
     </TableContainer>
 
     <button onClick={jspPdfGenerator}>GeneratePdf</button>
+     <button onClick={()=>downloadAsOnject(jsonObj,"rahul")}>GenerateMS</button>
+    
     </div>
   );
 }
