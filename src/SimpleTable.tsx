@@ -8,7 +8,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import jsPDF from 'jspdf';
-import ReactMarkdown from 'react-markdown';
+// import ReactMarkdown from 'react-markdown';
 import autoTable from 'jspdf-autotable';
 import 'jspdf-autotable';
 import json2md from 'json2md';
@@ -111,7 +111,7 @@ const data=[
 // for(let row=0 ;row<data.length; row++){
   
 //     console.log(json2md([
-      
+       
       
 //     ]))
     
@@ -119,24 +119,17 @@ const data=[
 // }
 let jsonObj:json2md.DataObject ={
   table:{
-      headers:[
-          "name",
-          "calories",
-          "fat",
-          "carbs",
-          "protein"
-
-      ],
-      rows:[]
+      headers:Object.keys(data[0]),
+      rows:data
   }
 };
 
-for(let datas  of data){
-  if(jsonObj.table!==undefined){
-    //@ts-ignore
-  jsonObj.table.rows.push([datas.name,datas.calories,datas.fat,datas.carbs,datas.protein]);
-}
-}
+// for(let datas  of data){
+//   if(jsonObj.table!==undefined){
+//     //@ts-ignore
+//   jsonObj.table.rows.push([datas.name,datas.calories,datas.fat,datas.carbs,datas.protein]);
+// }
+// }
 
 
 console.log(json2md(jsonObj));
@@ -157,14 +150,16 @@ function downloadAsOnject(data:any,exportName:any):void{
     downloadAnchorNode.remove();
 }
 
-function generateDynamicTable():void{
-   let dataLength=data.length;
+// function generateDynamicTable():void{
+//    let dataLength=data.length;
 
-   if(dataLength>0){  
+//    if(dataLength>0){  
 
-   }
+//    }
 
-}
+// }
+
+
 
 
  function jspPdfGenerator():void{
@@ -223,7 +218,7 @@ export default function SimpleTable() {
     </TableContainer>
 
     <button onClick={jspPdfGenerator}>GeneratePdf</button>
-     <button onClick={()=>downloadAsOnject(jsonObj,"rahul")}>GenerateMS</button>
+     <button onClick={()=>downloadAsOnject(jsonObj,"rahul")}>GenerateMD</button>
     
     </div>
   );
